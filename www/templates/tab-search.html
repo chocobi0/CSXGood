@@ -1,0 +1,40 @@
+<ion-view view-title="Search" hide-nav-bar="true" ng-controller="SearchCtrl as search">
+  <ion-header-bar class="bar bar-header disable-user-behavior" align-title="center">
+    <!--<button ng-click="$ionicGoBack()" class="button back-button hide buttons  button-clear header-item">-->
+    <!--<i class="icon ion-ios-arrow-back"></i>-->
+    <!--<span class="back-text">-->
+    <!--<span class="default-title">Back</span>-->
+    <!--<span class="previous-title hide"></span>-->
+    <!--</span>-->
+    <!--</button>-->
+    <div class="buttons">
+      <button class="button button-icon ion-navicon" ng-click="openModal()"></button>
+    </div>
+    <div class="title">
+      <div class="header-tabbar">
+      </div>
+    </div>
+    <div class="buttons">
+      <button class="button button-icon ion-ios-chatbubble-outline" ng-click="" ng-hide="isConnectedBLE === true"></button>
+    </div>
+  </ion-header-bar>
+  <ion-content >
+    <div class="list list-inset">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" ng-model="searchText.word" placeholder="Search">
+      </label>
+    </div>
+    <div class="list">
+      <div ng-repeat="dic in search.dics">
+        <div class="item item-divider">
+          {{dic.category}}
+        </div>
+        <a class="item item-icon-right" ng-repeat="sub in dic.sub | filter:searchText:strict" href="#/tab/search/{{dic.category}}/{{sub.word}}" >{{sub.word}}
+          <i class="icon ion-ios-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>
